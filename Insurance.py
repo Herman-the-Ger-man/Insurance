@@ -57,13 +57,6 @@ class BmiClassification:
     bmi_segments_distribution["fat"] = round(len(bmi_segments["fat"])/counter*100, 2)
     bmi_segments_distribution["very fat"] = round(len(bmi_segments["very fat"])/counter*100, 2)
 
-    print(bmi_segments_distribution["thin"])
-    print(bmi_segments_distribution["normal"])
-    print(bmi_segments_distribution["fat"])
-    print(bmi_segments_distribution["very fat"])
-
-    print(bmi_segments_distribution)
-
     def query(self, segment):
         segment_name = segment
         percentage = BmiClassification.bmi_segments_distribution[segment]
