@@ -34,13 +34,14 @@ with open("insurance.csv", newline="") as data:
         counter += 1
 
 # classifier for bmi
-class bmi_classification:
-    # aggregates the bmi values into different segments
-    bmi_segments = {"thin": [], "normal": [], "fat": [], "very fat": []}
+class BmiClassification:
 
-    # shows the distribution of the different within the total dataset
-    bmi_segments_distribution = {"thin": 0, "normal": 0, "fat": 0, "very fat": 0}
+    # aggregates the bmi data entries into different segments
+    bmi_segments = {"thin": [], "normal": [], "fat": [], "very fat": []}
     
+    # shows the distribution of the different within the total dataset as a percentage of total dataset
+    bmi_segments_distribution = {"thin": 0, "normal": 0, "fat": 0, "very fat": 0}
+
     for i in bmi:
         if i < 18.5:
             bmi_segments["thin"].append(i)
@@ -61,4 +62,11 @@ class bmi_classification:
     print(bmi_segments_distribution["fat"])
     print(bmi_segments_distribution["very fat"])
 
-bmi_classification = bmi_classification()
+    print(bmi_segments_distribution)
+
+    def query(self, segment):
+        segment_name = segment
+        percentage = BmiClassification.bmi_segments_distribution[segment]
+        print("There are around {percentage} percent of the people in this BMI-Segment and they could be described as {segment_name}.".format(percentage=percentage, segment_name=segment_name))
+
+BmiClassification().query("fat")
